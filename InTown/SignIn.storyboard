@@ -32,7 +32,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onSignUpButtonTapped:" destination="DqU-bh-eCB" eventType="touchUpInside" id="qGv-vI-Bza"/>
+                                    <action selector="onSignUpButtonTapped:" destination="DqU-bh-eCB" eventType="touchUpInside" id="tNc-3L-BDg"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9sW-rG-ymO">
@@ -43,6 +43,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="DqU-bh-eCB" id="vk5-4O-tfF"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2N-tP-vVs">
                                 <rect key="frame" x="16" y="363" width="288" height="19"/>
@@ -54,7 +57,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onForgotButtonTapped:" destination="DqU-bh-eCB" eventType="touchUpInside" id="oSu-44-plr"/>
+                                    <action selector="onForgotButtonTapped:" destination="DqU-bh-eCB" eventType="touchUpInside" id="h2M-RN-Fv5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8t-eD-qdB">
@@ -67,7 +70,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="onSignInButtonTapped:" destination="DqU-bh-eCB" eventType="touchUpInside" id="rCy-hL-hu9"/>
+                                    <action selector="onSignInButtonTapped:" destination="DqU-bh-eCB" eventType="touchUpInside" id="pCg-N9-KdT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zU5-V8-qYE">
@@ -89,7 +92,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="DqU-bh-eCB" id="SJd-s8-5mt"/>
+                                    <outlet property="delegate" destination="DqU-bh-eCB" id="h0f-41-mzz"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZz-hA-JE6">
@@ -99,7 +102,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onCancelButtonTapped:" destination="DqU-bh-eCB" eventType="touchUpInside" id="8cr-Xn-rXp"/>
+                                    <action selector="onCancelButtonTapped:" destination="DqU-bh-eCB" eventType="touchUpInside" id="qIb-K7-u0a"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -139,13 +142,13 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="emailTextField" destination="tUy-eq-qJW" id="L5b-0S-v2v"/>
-                        <outlet property="passwordTextField" destination="9sW-rG-ymO" id="Rbi-dT-IdB"/>
+                        <outlet property="emailTextField" destination="tUy-eq-qJW" id="IBP-ca-9ws"/>
+                        <outlet property="passwordTextField" destination="9sW-rG-ymO" id="9Fp-AH-i6J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9d-BC-GY5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="403"/>
+            <point key="canvasLocation" x="784" y="355"/>
         </scene>
     </scenes>
     <resources>

@@ -34,10 +34,6 @@
 		F2B1D5CD1B998CC200D8B5C4 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D5CC1B998CC200D8B5C4 /* Feed.storyboard */; };
 		F2B1D5D01B998CDA00D8B5C4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D5CF1B998CDA00D8B5C4 /* User.m */; };
 		F2B1D5D31B998CEF00D8B5C4 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D5D21B998CEF00D8B5C4 /* Post.m */; };
-		F2B1D5D61B998D3600D8B5C4 /* FeedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D5D51B998D3600D8B5C4 /* FeedTVC.m */; };
-		F2B1D5D91B998D4A00D8B5C4 /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D5D81B998D4A00D8B5C4 /* WelcomeVC.m */; };
-		F2B1D5DC1B998D5800D8B5C4 /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D5DB1B998D5800D8B5C4 /* SignUpVC.m */; };
-		F2B1D5DF1B998D6500D8B5C4 /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D5DE1B998D6500D8B5C4 /* SignInVC.m */; };
 		F2B1D5EA1B998DE400D8B5C4 /* fr.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D5E61B998DE400D8B5C4 /* fr.png */; };
 		F2B1D5EB1B998DE400D8B5C4 /* spa.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D5E71B998DE400D8B5C4 /* spa.png */; };
 		F2B1D5EC1B998DE400D8B5C4 /* br.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D5E81B998DE400D8B5C4 /* br.png */; };
@@ -57,6 +53,13 @@
 		F2B1D6071B998E5400D8B5C4 /* AppIcon29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D5FE1B998E5400D8B5C4 /* AppIcon29x29.png */; };
 		F2B1D60A1B998E9300D8B5C4 /* IntownLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D6081B998E9300D8B5C4 /* IntownLogo.png */; };
 		F2B1D60B1B998E9300D8B5C4 /* cityOnlyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D6091B998E9300D8B5C4 /* cityOnlyLogo.png */; };
+		F2B1D60E1B99906C00D8B5C4 /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D60D1B99906C00D8B5C4 /* SignInVC.m */; };
+		F2B1D6111B99908300D8B5C4 /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D6101B99908300D8B5C4 /* SignUpVC.m */; };
+		F2B1D6141B9990AF00D8B5C4 /* WelcomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D6131B9990AF00D8B5C4 /* WelcomeVC.m */; };
+		F2B1D6171B9990CB00D8B5C4 /* ProfileTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D6161B9990CB00D8B5C4 /* ProfileTVC.m */; };
+		F2B1D61A1B9990DC00D8B5C4 /* FeedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D6191B9990DC00D8B5C4 /* FeedTVC.m */; };
+		F2B1D61D1B99A6A800D8B5C4 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D61C1B99A6A800D8B5C4 /* Policy.storyboard */; };
+		F2B1D6201B99A72300D8B5C4 /* TermAndConditionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D61F1B99A72300D8B5C4 /* TermAndConditionsVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,14 +108,6 @@
 		F2B1D5CF1B998CDA00D8B5C4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		F2B1D5D11B998CEF00D8B5C4 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		F2B1D5D21B998CEF00D8B5C4 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
-		F2B1D5D41B998D3600D8B5C4 /* FeedTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTVC.h; sourceTree = "<group>"; };
-		F2B1D5D51B998D3600D8B5C4 /* FeedTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTVC.m; sourceTree = "<group>"; };
-		F2B1D5D71B998D4A00D8B5C4 /* WelcomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeVC.h; sourceTree = "<group>"; };
-		F2B1D5D81B998D4A00D8B5C4 /* WelcomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeVC.m; sourceTree = "<group>"; };
-		F2B1D5DA1B998D5800D8B5C4 /* SignUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpVC.h; sourceTree = "<group>"; };
-		F2B1D5DB1B998D5800D8B5C4 /* SignUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpVC.m; sourceTree = "<group>"; };
-		F2B1D5DD1B998D6500D8B5C4 /* SignInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInVC.h; sourceTree = "<group>"; };
-		F2B1D5DE1B998D6500D8B5C4 /* SignInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInVC.m; sourceTree = "<group>"; };
 		F2B1D5E61B998DE400D8B5C4 /* fr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fr.png; sourceTree = "<group>"; };
 		F2B1D5E71B998DE400D8B5C4 /* spa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spa.png; sourceTree = "<group>"; };
 		F2B1D5E81B998DE400D8B5C4 /* br.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = br.png; sourceTree = "<group>"; };
@@ -132,6 +127,19 @@
 		F2B1D5FE1B998E5400D8B5C4 /* AppIcon29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon29x29.png; sourceTree = "<group>"; };
 		F2B1D6081B998E9300D8B5C4 /* IntownLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IntownLogo.png; sourceTree = "<group>"; };
 		F2B1D6091B998E9300D8B5C4 /* cityOnlyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cityOnlyLogo.png; sourceTree = "<group>"; };
+		F2B1D60C1B99906C00D8B5C4 /* SignInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInVC.h; sourceTree = "<group>"; };
+		F2B1D60D1B99906C00D8B5C4 /* SignInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInVC.m; sourceTree = "<group>"; };
+		F2B1D60F1B99908300D8B5C4 /* SignUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpVC.h; sourceTree = "<group>"; };
+		F2B1D6101B99908300D8B5C4 /* SignUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpVC.m; sourceTree = "<group>"; };
+		F2B1D6121B9990AF00D8B5C4 /* WelcomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeVC.h; sourceTree = "<group>"; };
+		F2B1D6131B9990AF00D8B5C4 /* WelcomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeVC.m; sourceTree = "<group>"; };
+		F2B1D6151B9990CB00D8B5C4 /* ProfileTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTVC.h; sourceTree = "<group>"; };
+		F2B1D6161B9990CB00D8B5C4 /* ProfileTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTVC.m; sourceTree = "<group>"; };
+		F2B1D6181B9990DC00D8B5C4 /* FeedTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTVC.h; sourceTree = "<group>"; };
+		F2B1D6191B9990DC00D8B5C4 /* FeedTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTVC.m; sourceTree = "<group>"; };
+		F2B1D61C1B99A6A800D8B5C4 /* Policy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
+		F2B1D61E1B99A72300D8B5C4 /* TermAndConditionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermAndConditionsVC.h; sourceTree = "<group>"; };
+		F2B1D61F1B99A72300D8B5C4 /* TermAndConditionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermAndConditionsVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +205,7 @@
 		F2B1D57B1B99833400D8B5C4 /* InTown */ = {
 			isa = PBXGroup;
 			children = (
+				F2B1D61B1B99A68200D8B5C4 /* Term & Conditions */,
 				F2B1D5E01B998D9700D8B5C4 /* Images */,
 				F2B1D5C31B998C2600D8B5C4 /* AppDelegate */,
 				F2B1D5C21B998C1D00D8B5C4 /* Data */,
@@ -245,9 +254,9 @@
 		F2B1D5BD1B99881600D8B5C4 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				F2B1D60C1B99906C00D8B5C4 /* SignInVC.h */,
+				F2B1D60D1B99906C00D8B5C4 /* SignInVC.m */,
 				F2B1D5C41B998C8A00D8B5C4 /* SignIn.storyboard */,
-				F2B1D5DD1B998D6500D8B5C4 /* SignInVC.h */,
-				F2B1D5DE1B998D6500D8B5C4 /* SignInVC.m */,
 			);
 			name = SignIn;
 			sourceTree = "<group>";
@@ -255,9 +264,9 @@
 		F2B1D5BE1B99882100D8B5C4 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				F2B1D5DA1B998D5800D8B5C4 /* SignUpVC.h */,
-				F2B1D5DB1B998D5800D8B5C4 /* SignUpVC.m */,
 				F2B1D5C61B998C9600D8B5C4 /* SignUp.storyboard */,
+				F2B1D60F1B99908300D8B5C4 /* SignUpVC.h */,
+				F2B1D6101B99908300D8B5C4 /* SignUpVC.m */,
 			);
 			name = SignUp;
 			sourceTree = "<group>";
@@ -265,9 +274,9 @@
 		F2B1D5BF1B99882E00D8B5C4 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				F2B1D5D71B998D4A00D8B5C4 /* WelcomeVC.h */,
-				F2B1D5D81B998D4A00D8B5C4 /* WelcomeVC.m */,
 				F2B1D5C81B998CA600D8B5C4 /* Welcome.storyboard */,
+				F2B1D6121B9990AF00D8B5C4 /* WelcomeVC.h */,
+				F2B1D6131B9990AF00D8B5C4 /* WelcomeVC.m */,
 			);
 			name = Welcome;
 			sourceTree = "<group>";
@@ -276,6 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				F2B1D5CA1B998CB200D8B5C4 /* Profile.storyboard */,
+				F2B1D6151B9990CB00D8B5C4 /* ProfileTVC.h */,
+				F2B1D6161B9990CB00D8B5C4 /* ProfileTVC.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -284,8 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				F2B1D5CC1B998CC200D8B5C4 /* Feed.storyboard */,
-				F2B1D5D41B998D3600D8B5C4 /* FeedTVC.h */,
-				F2B1D5D51B998D3600D8B5C4 /* FeedTVC.m */,
+				F2B1D6181B9990DC00D8B5C4 /* FeedTVC.h */,
+				F2B1D6191B9990DC00D8B5C4 /* FeedTVC.m */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -376,6 +387,16 @@
 			name = Flags;
 			sourceTree = "<group>";
 		};
+		F2B1D61B1B99A68200D8B5C4 /* Term & Conditions */ = {
+			isa = PBXGroup;
+			children = (
+				F2B1D61C1B99A6A800D8B5C4 /* Policy.storyboard */,
+				F2B1D61E1B99A72300D8B5C4 /* TermAndConditionsVC.h */,
+				F2B1D61F1B99A72300D8B5C4 /* TermAndConditionsVC.m */,
+			);
+			name = "Term & Conditions";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -464,6 +485,7 @@
 				F2B1D6041B998E5400D8B5C4 /* AppIcon60x60@2x.png in Resources */,
 				F2B1D5F11B998DF100D8B5C4 /* twitterLoginButton.png in Resources */,
 				F2B1D5C51B998C8A00D8B5C4 /* SignIn.storyboard in Resources */,
+				F2B1D61D1B99A6A800D8B5C4 /* Policy.storyboard in Resources */,
 				F2B1D58B1B99833400D8B5C4 /* Main.storyboard in Resources */,
 				F2B1D5CD1B998CC200D8B5C4 /* Feed.storyboard in Resources */,
 				F2B1D6011B998E5400D8B5C4 /* AppIcon40x40@3x.png in Resources */,
@@ -501,14 +523,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B1D5D01B998CDA00D8B5C4 /* User.m in Sources */,
-				F2B1D5D61B998D3600D8B5C4 /* FeedTVC.m in Sources */,
-				F2B1D5DF1B998D6500D8B5C4 /* SignInVC.m in Sources */,
 				F2B1D5D31B998CEF00D8B5C4 /* Post.m in Sources */,
-				F2B1D5D91B998D4A00D8B5C4 /* WelcomeVC.m in Sources */,
 				F2B1D5851B99833400D8B5C4 /* InTown.xcdatamodeld in Sources */,
+				F2B1D6171B9990CB00D8B5C4 /* ProfileTVC.m in Sources */,
 				F2B1D5821B99833400D8B5C4 /* AppDelegate.m in Sources */,
-				F2B1D5DC1B998D5800D8B5C4 /* SignUpVC.m in Sources */,
+				F2B1D61A1B9990DC00D8B5C4 /* FeedTVC.m in Sources */,
+				F2B1D6201B99A72300D8B5C4 /* TermAndConditionsVC.m in Sources */,
+				F2B1D6111B99908300D8B5C4 /* SignUpVC.m in Sources */,
 				F2B1D5881B99833400D8B5C4 /* ViewController.m in Sources */,
+				F2B1D6141B9990AF00D8B5C4 /* WelcomeVC.m in Sources */,
+				F2B1D60E1B99906C00D8B5C4 /* SignInVC.m in Sources */,
 				F2B1D57F1B99833400D8B5C4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

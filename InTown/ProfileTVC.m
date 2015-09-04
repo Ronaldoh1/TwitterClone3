@@ -1,18 +1,18 @@
 //
-//  FeedTVC.m
+//  ProfileTVC.m
 //  InTown
 //
 //  Created by Ronald Hernandez on 9/4/15.
 //  Copyright (c) 2015 inTown. All rights reserved.
 //
 
-#import "FeedTVC.h"
+#import "ProfileTVC.h"
 
-@interface FeedTVC ()
+@interface ProfileTVC ()
 
 @end
 
-@implementation FeedTVC
+@implementation ProfileTVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

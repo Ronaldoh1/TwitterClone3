@@ -10,4 +10,8 @@
 
 @implementation User
 
++(void)load {
+    [self registerSubclass];
+}
+
 @end
