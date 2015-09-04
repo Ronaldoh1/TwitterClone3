@@ -7,6 +7,7 @@
 //
 
 #import "SignInVC.h"
+#import "User.h"
 
 @interface SignInVC ()
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -30,6 +31,18 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
 
 - (IBAction)onSignInButtonTapped:(UIButton *)sender {
 
+    [User logInWithUsernameInBackground:self.emailTextField.text password:self.passwordTextField.text  block:^(PFUser *user, NSError *error) {
+      if (user) {
+
+          // Do stuff after successful login.
+          UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Feed" bundle:nil];
+          UIViewController *feedNavVC = [storyBoard instantiateViewControllerWithIdentifier:@"FeedNavVC"];
+          [self presentViewController:feedNavVC animated:YES completion:nil];
+      } else {
+          // The login failed. Check error to see why.
+          [self displayAlertWithTitle:@"Error Loggin in" andWithMessage:error.localizedDescription];
+      }
+  }];
 
 }
 
@@ -40,7 +53,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     UIViewController *signInVC = [storyBoard instantiateViewControllerWithIdentifier:@"SignUpVC"];
     [self presentViewController:signInVC animated:YES completion:nil];
 
-    
+
 }
 
 
@@ -49,12 +62,48 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
-- (IBAction)onForgotButtonTapped:(UIButton *)sender {
+- (IBAction)onForgotButtonTapped:(UIButton *)sender{
+
+
+    UIAlertController *alertController = [ UIAlertController alertControllerWithTitle:@"Reset Password" message:@"Enter your email address" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Email Address";
+    }];
+
+
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Cancel action");
+                                   }];
+    UIAlertAction *resetPasswordAction = [UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+
+        UITextField *textField = alertController.textFields.firstObject;
+        [PFUser requestPasswordResetForEmail:textField.text];
+    }];
+
+    [alertController addAction:resetPasswordAction];
+    [alertController addAction:cancelAction];
+
+    [self presentViewController:alertController animated:YES
+                     completion:nil];
 
     
 }
 
+//************Helper Methods ****************************//
+//Display general alert
 
+-(void)displayAlertWithTitle:(NSString *)title andWithMessage:(NSString *)message{
+
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+
+    [alertView show];
+
+
+}
 #pragma Marks - hiding keyboard
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     CGRect textFieldRect =
