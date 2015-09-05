@@ -10,4 +10,18 @@
 
 @implementation Post
 
+@dynamic likesCounts;
+@dynamic postText;
+@dynamic postOwner;
+@dynamic locationGeoPoint;
+@dynamic postOnwerUsername;
+
++(void)load {
+    [self registerSubclass];
+}
++ (NSString *)parseClassName{
+    return @"Post";
+}
 @end
+
+

@@ -21,6 +21,7 @@
 @dynamic currentLoccation;
 @dynamic inboxArray;
 @dynamic isFbUser;
+@dynamic currentCity;
 
 +(void)load {
     [self registerSubclass];

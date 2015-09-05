@@ -61,6 +61,10 @@
 		F2B1D61A1B9990DC00D8B5C4 /* FeedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D6191B9990DC00D8B5C4 /* FeedTVC.m */; };
 		F2B1D61D1B99A6A800D8B5C4 /* Policy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D61C1B99A6A800D8B5C4 /* Policy.storyboard */; };
 		F2B1D6201B99A72300D8B5C4 /* TermAndConditionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D61F1B99A72300D8B5C4 /* TermAndConditionsVC.m */; };
+		F2B1D6231B9ABEA200D8B5C4 /* inboxButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D6221B9ABEA200D8B5C4 /* inboxButton.png */; };
+		F2B1D6261B9AC10C00D8B5C4 /* DirectMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D6251B9AC10C00D8B5C4 /* DirectMessages.storyboard */; };
+		F2B1D6291B9AC2A000D8B5C4 /* InboxTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D6281B9AC2A000D8B5C4 /* InboxTVC.m */; };
+		F2B1D62C1B9AC8D200D8B5C4 /* PostCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D62B1B9AC8D200D8B5C4 /* PostCustomCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +148,12 @@
 		F2B1D61C1B99A6A800D8B5C4 /* Policy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Policy.storyboard; sourceTree = "<group>"; };
 		F2B1D61E1B99A72300D8B5C4 /* TermAndConditionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermAndConditionsVC.h; sourceTree = "<group>"; };
 		F2B1D61F1B99A72300D8B5C4 /* TermAndConditionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermAndConditionsVC.m; sourceTree = "<group>"; };
+		F2B1D6221B9ABEA200D8B5C4 /* inboxButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inboxButton.png; sourceTree = "<group>"; };
+		F2B1D6251B9AC10C00D8B5C4 /* DirectMessages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DirectMessages.storyboard; sourceTree = "<group>"; };
+		F2B1D6271B9AC2A000D8B5C4 /* InboxTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboxTVC.h; sourceTree = "<group>"; };
+		F2B1D6281B9AC2A000D8B5C4 /* InboxTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxTVC.m; sourceTree = "<group>"; };
+		F2B1D62A1B9AC8D200D8B5C4 /* PostCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCustomCell.h; sourceTree = "<group>"; };
+		F2B1D62B1B9AC8D200D8B5C4 /* PostCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCustomCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +232,7 @@
 				F2B1D5E01B998D9700D8B5C4 /* Images */,
 				F2B1D5C31B998C2600D8B5C4 /* AppDelegate */,
 				F2B1D5C21B998C1D00D8B5C4 /* Data */,
+				F2B1D6241B9AC0CD00D8B5C4 /* Direct Messages */,
 				F2B1D5C11B998B8F00D8B5C4 /* Feed */,
 				F2B1D5C01B99883E00D8B5C4 /* Profile */,
 				F2B1D5BF1B99882E00D8B5C4 /* Welcome */,
@@ -310,6 +321,8 @@
 				F2B1D5CC1B998CC200D8B5C4 /* Feed.storyboard */,
 				F2B1D6181B9990DC00D8B5C4 /* FeedTVC.h */,
 				F2B1D6191B9990DC00D8B5C4 /* FeedTVC.m */,
+				F2B1D62A1B9AC8D200D8B5C4 /* PostCustomCell.h */,
+				F2B1D62B1B9AC8D200D8B5C4 /* PostCustomCell.m */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -337,6 +350,7 @@
 		F2B1D5E01B998D9700D8B5C4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F2B1D6221B9ABEA200D8B5C4 /* inboxButton.png */,
 				F2B1D5E51B998DCB00D8B5C4 /* Flags */,
 				F2B1D5E41B998DBE00D8B5C4 /* Buttons */,
 				F2B1D5E31B998DB900D8B5C4 /* Misc */,
@@ -427,6 +441,16 @@
 				F2B1D5A61B9983B900D8B5C4 /* Parse.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2B1D6241B9AC0CD00D8B5C4 /* Direct Messages */ = {
+			isa = PBXGroup;
+			children = (
+				F2B1D6251B9AC10C00D8B5C4 /* DirectMessages.storyboard */,
+				F2B1D6271B9AC2A000D8B5C4 /* InboxTVC.h */,
+				F2B1D6281B9AC2A000D8B5C4 /* InboxTVC.m */,
+			);
+			name = "Direct Messages";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -528,6 +552,7 @@
 				F2B1D5C71B998C9600D8B5C4 /* SignUp.storyboard in Resources */,
 				F2B1D5CB1B998CB200D8B5C4 /* Profile.storyboard in Resources */,
 				F2B1D60A1B998E9300D8B5C4 /* IntownLogo.png in Resources */,
+				F2B1D6261B9AC10C00D8B5C4 /* DirectMessages.storyboard in Resources */,
 				F2B1D6051B998E5400D8B5C4 /* AppIcon60x60@3x.png in Resources */,
 				F2B1D5F01B998DF100D8B5C4 /* facebookLoginButton.png in Resources */,
 				F2B1D6061B998E5400D8B5C4 /* AppIcon29x29@2x.png in Resources */,
@@ -535,6 +560,7 @@
 				F2B1D5EA1B998DE400D8B5C4 /* fr.png in Resources */,
 				F2B1D5ED1B998DE400D8B5C4 /* us.png in Resources */,
 				F2B1D5EC1B998DE400D8B5C4 /* br.png in Resources */,
+				F2B1D6231B9ABEA200D8B5C4 /* inboxButton.png in Resources */,
 				F2B1D5F31B998E0000D8B5C4 /* defaultImage.png in Resources */,
 				F2B1D6021B998E5400D8B5C4 /* AppIcon57x57.png in Resources */,
 				F2B1D5F51B998E3C00D8B5C4 /* splashScreen.png in Resources */,
@@ -591,10 +617,12 @@
 			files = (
 				F2B1D5D01B998CDA00D8B5C4 /* User.m in Sources */,
 				F2B1D5D31B998CEF00D8B5C4 /* Post.m in Sources */,
+				F2B1D62C1B9AC8D200D8B5C4 /* PostCustomCell.m in Sources */,
 				F2B1D5851B99833400D8B5C4 /* InTown.xcdatamodeld in Sources */,
 				F2B1D6171B9990CB00D8B5C4 /* ProfileTVC.m in Sources */,
 				F2B1D5821B99833400D8B5C4 /* AppDelegate.m in Sources */,
 				F2B1D61A1B9990DC00D8B5C4 /* FeedTVC.m in Sources */,
+				F2B1D6291B9AC2A000D8B5C4 /* InboxTVC.m in Sources */,
 				F2B1D6201B99A72300D8B5C4 /* TermAndConditionsVC.m in Sources */,
 				F2B1D6111B99908300D8B5C4 /* SignUpVC.m in Sources */,
 				F2B1D5881B99833400D8B5C4 /* ViewController.m in Sources */,

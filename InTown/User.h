@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString *userAdministrativeArea;
 @property (nonatomic, strong) NSString *userCountryCode;
 @property (nonatomic, strong) PFGeoPoint *currentLoccation;
+@property (nonatomic, strong) NSString *currentCity;
 
 //List of Users who sent Messages
 @property (nonatomic, strong) NSMutableArray *inboxArray;

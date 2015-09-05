@@ -8,10 +8,20 @@
 
 #import "FeedTVC.h"
 #import "User.h"
+#import "MRProgressOverlayView.h"
+#import "MRProgress.h"
+#import "Post.h"
 
-@interface FeedTVC ()
+@interface FeedTVC ()<CLLocationManagerDelegate>
 @property UIImage *tempImage;
 @property User *currentUser;
+@property UIWindow *window;
+
+@property CLLocation *currentLocation;
+@property CLLocationManager *locationManager;
+@property CLLocation *initialLocation;
+@property PFGeoPoint *currentGeoPoint;
+@property (weak, nonatomic) IBOutlet UITextView *postTextView;
 
 @end
 
@@ -21,11 +31,179 @@
     [super viewDidLoad];
     
     [self setUpProfileImage];
+    [self performInitialSetup];
 }
+
+
+-(void)viewDidAppear:(BOOL)animated{
+
+    [super viewWillAppear:YES];
+
+    if ([User currentUser] != nil) {
+
+
+        [self setUpProfileImage];
+        
+    }
+
+}
+
+
+
+
+//helper method for initial set up
+
+-(void)performInitialSetup{
+
+
+
+    //Get Current User
+    self.currentUser = [User currentUser];
+
+    self.currentLocation = [CLLocation new];
+
+
+
+    [self setUpProfileImage];
+
+    //set up the textView
+    self.postTextView.text = @"In Town? Let others know what you're up to!";
+    self.postTextView.textColor = [UIColor lightGrayColor];
+
+    //Get User's Location
+    self.locationManager = [CLLocationManager new];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager startUpdatingLocation];
+
+
+
+//
+//    //Get reference to entire window
+//    self.window = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
+//
+//
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"neulynxRedLogo.png"]];
+//    CGSize imageSize = CGSizeMake(150, 60);
+//    CGFloat marginX = (self.navigationController.navigationBar.frame.size.width / 2) - (imageSize.width / 2);
+//
+//    imageView.frame = CGRectMake(marginX, -10, imageSize.width, imageSize.height);
+//    [self.navigationController.navigationBar addSubview:imageView];
+
+
+
+
+//    //*check if the application has been previously run. If it's hasn't then present, the tutorial.*//
+//
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasBeenRun"]) {
+//
+//        UIStoryboard *tutorialStoryboard = [UIStoryboard storyboardWithName:@"Tutorial" bundle:nil];
+//        UITabBarController *tutorialNavVC = [tutorialStoryboard instantiateViewControllerWithIdentifier:@"tutorialNavVC"];
+//
+//
+//        [self presentViewController:tutorialNavVC animated:true completion:nil];
+//
+//    }
+
+//    //*if it has displayed the map then we say it has been run...therefore we do not show the Tutorial again*//
+//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasBeenRun"];
+//
+//    //Dismiss Keyboard when user touches outside of the search bar.
+//    //first - create a tap gesture.
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+//
+//    //add the tap gesture to the current view.
+//    [self.view addGestureRecognizer:tap];
+
+
+    //Get user's information and display current location and profile picture.
+    [MRProgressOverlayView showOverlayAddedTo:self.window title:@"Loading..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+    [self getUserInformationFromParse:^{
+       [self getUserCurrentLocation];
+        [self setUpProfileImage];
+
+        [MRProgressOverlayView dismissOverlayForView: self.window animated:YES];
+    } afterDelay:2.0];
+
+
+
+    //
+    //    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //    //BOOL tmpBool = (appDelegate.hideDoneButtonForRequests);
+    //
+
+
+    //    tmpBool = YES;
+    //
+    //    appDelegate.hideDoneButtonForRequests = &(tmpBool);
+    //    appDelegate.hideDoneButtonForMessages = &(tmpBool);
+    
+
+    
+    
+    
+    
+}
+
+//Get user's current location
+-(void)getUserCurrentLocation{
+
+    //GETING THE USER'S LOCATION
+    //set up settings for location managers.
+    self.locationManager = [CLLocationManager new];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestAlwaysAuthorization];
+    [self.locationManager startUpdatingLocation];
+
+
+}
+
+#pragma mark CLLocationManager Delegate
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    self.currentLocation = [locations objectAtIndex:0];
+
+
+    NSLog(@"%@", self.currentLocation);
+    //Save the user's current Location in Background
+
+    self.currentGeoPoint = [PFGeoPoint new];
+
+    self.currentGeoPoint.latitude = self.currentLocation.coordinate.latitude;
+    self.currentGeoPoint.longitude = self.currentLocation.coordinate.latitude;
+
+    [User currentUser].currentLoccation = self.currentGeoPoint;
+
+
+    [[User currentUser] saveInBackground];
+
+
+    [self.locationManager stopUpdatingLocation];
+
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
+    [geocoder reverseGeocodeLocation:self.currentLocation
+                   completionHandler:^(NSArray *placemarks, NSError *error) {
+                       if (error){
+                           return;
+                       }
+                       CLPlacemark *placemark = [placemarks objectAtIndex:0];
+
+
+                       self.currentUser.currentCity = placemark.locality;
+                       self.currentUser.userAdministrativeArea = placemark.administrativeArea;
+                       self.currentUser.userCountryCode = placemark.country;
+
+
+                       
+                   }];
+}
+
+
 //helper method to set up profile image button
 -(void)setUpProfileImage{
 
-    if (self.currentUser != nil){
+    if ([User currentUser] != nil){
         //create an image and assign it to defualt image
 
         [self getUsersProfileImage];
@@ -98,6 +276,44 @@
     }];
 }
 
+
+- (IBAction)onPostButtonDone:(UIButton *)sender {
+
+
+    Post *post = [Post new];
+
+    post.postText = self.postTextView.text;
+    post.postOwner = [User currentUser];
+    post.postOnwerUsername = [User currentUser].username;
+    post.locationGeoPoint = self.currentGeoPoint;
+
+    if (![self.postTextView.text isEqualToString:@""]) {
+
+    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+
+        if (succeeded) {
+
+          [self.postTextView resignFirstResponder];
+            //set up the textView
+            self.postTextView.text = @"In Town? Let others know what you're up to!";
+            self.postTextView.textColor = [UIColor lightGrayColor];
+
+
+            }
+
+
+    }];
+    }
+    [self.postTextView resignFirstResponder];
+
+
+
+
+
+
+}
+
+
 /*helper method to show user's profile. present the account view controller to display menus for user
  if the current user does not exist, then make him/her sign up.*/
 
@@ -123,59 +339,68 @@
     // Return the number of rows in the section.
     return 0;
 }
+- (IBAction)onInboxButtonTapped:(UIBarButtonItem *)sender {
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"DirectMessages" bundle:nil];
+    UIViewController *NavVC = [storyBoard instantiateViewControllerWithIdentifier:@"DMNavVC"];
+    [self presentViewController:NavVC animated:YES completion:nil];
+
+
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
+
+
+
+#pragma mark - UITextView Delegate Methods
+
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    if ([textView.text isEqualToString:@"In Town? Let others know what you're up to!"]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = @"In Town? Let others know what you're up to!";
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+    [textView resignFirstResponder];
+}
+
+
+#pragma Marks - hiding keyboard
+//hide keyboard when the user clicks return
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+
+    [self.view endEditing:true];
+    return true;
+}
+//helper method
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if([text isEqualToString:@"\n"])
+        [textView resignFirstResponder];
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+
+-(void)getUserInformationFromParse:(void(^)())block afterDelay:(NSTimeInterval)delay{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+    dispatch_after(popTime,dispatch_get_main_queue(), block);
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+
+-(void)saveFbUserInfoToParse:(void(^)())block afterDelay:(NSTimeInterval)delay{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+    dispatch_after(popTime,dispatch_get_main_queue(), block);
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

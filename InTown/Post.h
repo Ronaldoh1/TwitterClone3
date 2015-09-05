@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
-@interface Post : NSObject
+@interface Post : PFObject<PFSubclassing>
+
+@property User *postOwner;
+@property NSString *postOnwerUsername;
+@property NSString *postText;
+@property NSString *likesCounts;
+@property PFGeoPoint *locationGeoPoint;
 
 @end
