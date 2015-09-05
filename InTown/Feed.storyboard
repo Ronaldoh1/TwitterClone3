@@ -8,7 +8,7 @@
         <!--What's Happening?-->
         <scene sceneID="XeO-Dr-H0l">
             <objects>
-                <tableViewController id="f5H-YI-TpE" customClass="FeedTVC" customModule="InTown" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="f5H-YI-TpE" customClass="FeedTVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="115" sectionHeaderHeight="22" sectionFooterHeight="22" id="y5Q-Fx-ddQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

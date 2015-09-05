@@ -88,6 +88,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     UIViewController *termAndConditionsNavVC = [storyBoard instantiateViewControllerWithIdentifier:@"TermAndConditionsNavVC"];
     [self presentViewController:termAndConditionsNavVC animated:YES completion:nil];
 }
+
+
 - (IBAction)onCancelButtonTapped:(UIButton *)sender {
 
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -9,6 +9,18 @@
 #import "User.h"
 
 @implementation User
+@dynamic name;
+@dynamic aboutMe;
+@dynamic profileImage;
+@dynamic gender;
+@dynamic orientation;
+@dynamic languageArray;
+@dynamic age;
+@dynamic userAdministrativeArea;
+@dynamic userCountryCode;
+@dynamic currentLoccation;
+@dynamic inboxArray;
+@dynamic isFbUser;
 
 +(void)load {
     [self registerSubclass];
