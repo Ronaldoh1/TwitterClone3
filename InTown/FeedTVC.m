@@ -11,12 +11,13 @@
 #import "MRProgressOverlayView.h"
 #import "MRProgress.h"
 #import "Post.h"
+#import "PostCustomCell.h"
 
 @interface FeedTVC ()<CLLocationManagerDelegate>
 @property UIImage *tempImage;
 @property User *currentUser;
 @property UIWindow *window;
-
+@property NSMutableArray *postsArray;
 @property CLLocation *currentLocation;
 @property CLLocationManager *locationManager;
 @property CLLocation *initialLocation;
@@ -56,6 +57,9 @@
 -(void)performInitialSetup{
 
 
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
 
     //Get Current User
     self.currentUser = [User currentUser];
@@ -77,7 +81,14 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager startUpdatingLocation];
 
-
+    //setting image to Navigation Bar's title
+    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
+    titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    titleView.font = [UIFont fontWithName:@"Helvetica" size:20];
+    titleView.text = @"In Town?";
+    titleView.textColor = [UIColor colorWithRed:12.0/255.0 green:134/255.0 blue:243/255.0 alpha:1];
+    [self.navigationItem setTitleView:titleView];
+  //  [self downloadPosts];
 
 //
 //    //Get reference to entire window
@@ -162,10 +173,16 @@
 
 #pragma mark CLLocationManager Delegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    self.currentLocation = [locations objectAtIndex:0];
+    self.currentLocation = locations.firstObject;
 
+    if (self.currentLocation) {
+        //[self downloadActivitiesAndDisplayOnMap];
 
-    NSLog(@"%@", self.currentLocation);
+        [self downloadPosts];
+
+    }
+
+   // [self.locationManager stopUpdatingLocation];
     //Save the user's current Location in Background
 
     self.currentGeoPoint = [PFGeoPoint new];
@@ -276,6 +293,42 @@
     }];
 }
 
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    // Do your job, when done:
+
+    [self downloadPosts];
+    
+    [refreshControl endRefreshing];
+}
+-(void)downloadPosts{
+
+
+    if (self.currentLocation == nil) {
+        NSLog(@" location is nil");
+    }else{
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLocation:self.currentLocation];
+        NSLog(@"%@",geoPoint);
+    PFQuery *query = [Post query];
+        [query whereKey:@"locationGeoPoint" nearGeoPoint:geoPoint];
+       [query orderByDescending:@"createdAt"];
+       query.limit = 100;
+    [query includeKey:@"postOwner"];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *Posts, NSError *error){
+        if (!error) {
+
+            self.postsArray = [[NSArray alloc]initWithArray:Posts].mutableCopy;
+
+
+            NSLog(@"%@ booom", self.postsArray);
+
+
+            [self.tableView reloadData];
+
+        }
+    }];
+    }
+}
 
 - (IBAction)onPostButtonDone:(UIButton *)sender {
 
@@ -297,6 +350,8 @@
             //set up the textView
             self.postTextView.text = @"In Town? Let others know what you're up to!";
             self.postTextView.textColor = [UIColor lightGrayColor];
+            [self downloadPosts];
+            [self.tableView reloadData];
 
 
             }
@@ -329,15 +384,13 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+
+    return self.postsArray.count;
 }
 - (IBAction)onInboxButtonTapped:(UIBarButtonItem *)sender {
 
@@ -347,8 +400,29 @@
 
 
 }
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    PostCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+
+    Post *tempPost = [Post new];
+
+    tempPost = (Post *)(self.postsArray[indexPath.row]);
+
+    cell.postText.text = tempPost.postText;
+    cell.posterUserName.titleLabel.text = [NSString stringWithFormat:@"@%@", tempPost.postOnwerUsername];
 
 
+
+
+
+    return cell;
+
+
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 
 #pragma mark - UITextView Delegate Methods

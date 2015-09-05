@@ -65,6 +65,7 @@
 		F2B1D6261B9AC10C00D8B5C4 /* DirectMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B1D6251B9AC10C00D8B5C4 /* DirectMessages.storyboard */; };
 		F2B1D6291B9AC2A000D8B5C4 /* InboxTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D6281B9AC2A000D8B5C4 /* InboxTVC.m */; };
 		F2B1D62C1B9AC8D200D8B5C4 /* PostCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B1D62B1B9AC8D200D8B5C4 /* PostCustomCell.m */; };
+		F2B1D62E1B9B00DD00D8B5C4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B1D62D1B9B00DD00D8B5C4 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +155,7 @@
 		F2B1D6281B9AC2A000D8B5C4 /* InboxTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxTVC.m; sourceTree = "<group>"; };
 		F2B1D62A1B9AC8D200D8B5C4 /* PostCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCustomCell.h; sourceTree = "<group>"; };
 		F2B1D62B1B9AC8D200D8B5C4 /* PostCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCustomCell.m; sourceTree = "<group>"; };
+		F2B1D62D1B9B00DD00D8B5C4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2B1D62E1B9B00DD00D8B5C4 /* Social.framework in Frameworks */,
 				F2B1D5BC1B99843C00D8B5C4 /* libsqlite3.dylib in Frameworks */,
 				F2B1D5BA1B99842800D8B5C4 /* libz.dylib in Frameworks */,
 				F2B1D5B81B99841A00D8B5C4 /* SystemConfiguration.framework in Frameworks */,
@@ -241,7 +244,6 @@
 				F2B1D5861B99833400D8B5C4 /* ViewController.h */,
 				F2B1D5871B99833400D8B5C4 /* ViewController.m */,
 				F2B1D5891B99833400D8B5C4 /* Main.storyboard */,
-				F2B1D58C1B99833400D8B5C4 /* Images.xcassets */,
 				F2B1D58E1B99833400D8B5C4 /* LaunchScreen.xib */,
 				F2B1D5831B99833400D8B5C4 /* InTown.xcdatamodeld */,
 				F2B1D57C1B99833400D8B5C4 /* Supporting Files */,
@@ -372,6 +374,7 @@
 				F2B1D5FC1B998E5400D8B5C4 /* AppIcon60x60@3x.png */,
 				F2B1D5FD1B998E5400D8B5C4 /* AppIcon29x29@2x.png */,
 				F2B1D5FE1B998E5400D8B5C4 /* AppIcon29x29.png */,
+				F2B1D58C1B99833400D8B5C4 /* Images.xcassets */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 		F2B1D6211B9A962300D8B5C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2B1D62D1B9B00DD00D8B5C4 /* Social.framework */,
 				F2B1D5BB1B99843C00D8B5C4 /* libsqlite3.dylib */,
 				F2B1D5B91B99842800D8B5C4 /* libz.dylib */,
 				F2B1D5B71B99841A00D8B5C4 /* SystemConfiguration.framework */,

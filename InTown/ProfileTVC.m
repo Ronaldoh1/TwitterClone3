@@ -401,6 +401,13 @@
     [alertView show];
 }
 
+- (IBAction)onLogOutButtonTapped:(UIButton *)sender {
+
+    [User logOut];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Welcome" bundle:nil];
+    UIViewController *welcomeVC = [storyBoard instantiateViewControllerWithIdentifier:@"WelcomeVC"];
+    [self presentViewController:welcomeVC animated:YES completion:nil];
+}
 
 
 //**********************BLOCKS***********************************************//

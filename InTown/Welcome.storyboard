@@ -8,7 +8,7 @@
         <!--Intial Screen-->
         <scene sceneID="tk4-j6-BfY">
             <objects>
-                <viewController title="Intial Screen" id="PFh-TQ-6Qq" customClass="WelcomeVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeVC" title="Intial Screen" id="PFh-TQ-6Qq" customClass="WelcomeVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fh9-3I-IyA"/>
                         <viewControllerLayoutGuide type="bottom" id="zkM-D9-nSU"/>
