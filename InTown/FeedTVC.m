@@ -7,8 +7,11 @@
 //
 
 #import "FeedTVC.h"
+#import "User.h"
 
 @interface FeedTVC ()
+@property UIImage *tempImage;
+@property User *currentUser;
 
 @end
 
@@ -17,16 +20,94 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self setUpProfileImage];
+}
+//helper method to set up profile image button
+-(void)setUpProfileImage{
+
+    if (self.currentUser != nil){
+        //create an image and assign it to defualt image
+
+        [self getUsersProfileImage];
+
+
+    }else if (self.currentUser == nil){
+
+
+        self.tempImage = [UIImage imageNamed:@"defaultImage.png"];
+
+    }
+
+
+    UIImage *profileImage = self.tempImage;
+
+
+    //create button frame
+    CGRect buttonFrame = CGRectMake(0, 0, 40, 40);
+
+    //Create left Button
+    UIButton *button = [[UIButton alloc] initWithFrame:buttonFrame];
+
+    //make the button rounded
+    button.layer.cornerRadius = button.frame.size.height / 2;
+    button.layer.masksToBounds = YES;
+    button.layer.borderWidth = 2.0;
+    button.layer.borderColor = [UIColor colorWithRed:254.0/255.0 green:94/255.0 blue:1.0/255.0 alpha:1].CGColor;
+
+    [button setImage:profileImage forState:UIControlStateNormal];
+    [button reloadInputViews];
+
+    //add at tap gesture recognizer to the left button
+    UITapGestureRecognizer *tapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(profileImageTapped:)];
+    [button addGestureRecognizer:tapGesture];
+
+
+    //create a custom view for the button
+    UIView *profileButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    profileButtonView.bounds = CGRectOffset(profileButtonView.bounds, 10, 0);
+
+    //add the button to the custom view
+    [profileButtonView addSubview:button];
+
+    UIBarButtonItem *profileButtonItem = [[UIBarButtonItem alloc]initWithCustomView:profileButtonView];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.leftBarButtonItem = profileButtonItem;
+    
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+////Helper method to download user's profile image
+-(void)getUsersProfileImage{
+
+    [self.currentUser.profileImage getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:data];
+
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+
+                    self.tempImage = image;
+
+                });
+            });
+        }
+        
+    }];
+}
+
+/*helper method to show user's profile. present the account view controller to display menus for user
+ if the current user does not exist, then make him/her sign up.*/
+
+-(void)profileImageTapped:(UIBarButtonItem* )sender{
+
+
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+    UIViewController *NavVC = [storyBoard instantiateViewControllerWithIdentifier:@"ProfileNavVC"];
+    [self presentViewController:NavVC animated:YES completion:nil];
+
 }
 
 #pragma mark - Table view data source

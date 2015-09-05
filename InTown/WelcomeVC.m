@@ -7,6 +7,7 @@
 //
 
 #import "WelcomeVC.h"
+#import "User.h"
 
 @interface WelcomeVC ()
 
@@ -25,6 +26,17 @@
     self.signupButton.layer.borderWidth = 2.0;
     self.loginButton.layer.borderColor  = [UIColor whiteColor].CGColor;
     self.signupButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+
+    if ([User currentUser] != nil) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Feed" bundle:nil];
+        UIViewController *feedNavVC = [storyBoard instantiateViewControllerWithIdentifier:@"FeedNavVC"];
+        [self presentViewController:feedNavVC animated:YES completion:nil];
+    }
 }
 
 - (IBAction)onSignInButtonTapped:(UIButton *)sender {

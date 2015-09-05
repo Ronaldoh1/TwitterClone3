@@ -31,6 +31,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
     // Do any additional setup after loading the view.
 }
 
+
+
+
+
+
 - (IBAction)onSignUpButtonTapped:(UIButton *)sender {
 
 
@@ -70,10 +75,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 162;
             //Enable the message and requests tabs.
 
 
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
-            UINavigationController *navVC = [storyboard instantiateViewControllerWithIdentifier:@"ProfileNavVC"];
-
-            [self presentViewController:navVC animated:YES completion:nil];
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Feed" bundle:nil];
+            UIViewController *feedNavVC = [storyBoard instantiateViewControllerWithIdentifier:@"FeedNavVC"];
+            [self presentViewController:feedNavVC animated:YES completion:nil];
 
         } else { //show the error
             NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.

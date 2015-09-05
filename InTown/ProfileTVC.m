@@ -8,6 +8,9 @@
 
 #import "ProfileTVC.h"
 #import "User.h"
+#import "MRProgressOverlayView.h"
+#import "MRProgress.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ProfileTVC ()<UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, UITextViewDelegate>
 
@@ -43,12 +46,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self performInitialSetUp];
+    //get user's profile Image
+    [self getUsersProfileImage];
+    //get Uer's personal information
+    [self getUsersPersonalInformation];
 }
 
 //Initial set up of Nav Bar, User, Profile Image, Set up Delegates.
@@ -61,7 +63,7 @@
     self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height/2;
     self.profileImage.layer.masksToBounds = YES;
     self.profileImage.layer.borderWidth = 4.0;
-    self.profileImage.layer.borderColor = [UIColor colorWithRed:12.0/255.0 green:134/255.0 blue:243/255.0 alpha:1].CGColor;
+    self.profileImage.layer.borderColor = [UIColor colorWithRed:254.0/255.0 green:94/255.0 blue:1.0/255.0 alpha:1].CGColor;
 
 
     //setting image to Navigation Bar's title
@@ -78,7 +80,14 @@
     self.spanishButton.alpha = 0.3;
     self.englishButton.alpha = 0.3;
     self.frenchButton.alpha = 0.3;
-    
+
+
+    //Change the colors of the UISegmented Controls
+    self.genderPicker.backgroundColor = [UIColor whiteColor];
+    self.genderPicker.tintColor = [UIColor colorWithRed:254.0/255.0 green:94/255.0 blue:1.0/255.0 alpha:1];
+
+    self.orientationPicker.backgroundColor = [UIColor whiteColor];
+    self.orientationPicker.tintColor = [UIColor colorWithRed:254.0/255.0 green:94/255.0 blue:1.0/255.0 alpha:1];
 }
 //helper method to get user's languages
 -(void)getUsersPersonalInformation{
@@ -141,6 +150,97 @@
 
 }
 
+
+
+//**********Save the user's information************
+- (IBAction)onSaveButtonTapped:(UIBarButtonItem *)sender {
+
+
+    if ([self.nameTextField.text isEqualToString:@""] || [self.ageTextField.text isEqualToString:@""]) {
+        [self displayAlertWithTitle:@"Error in Form" andWithMessage:@"Personal information cannot be blank"];
+    } else {
+        self.currentUser.name = self.nameTextField.text;
+        self.currentUser.age = self.ageTextField.text;
+
+        if (self.genderPicker.selectedSegmentIndex == 0) {
+            self.currentUser.gender = @"Male";
+
+        } else if(self.genderPicker.selectedSegmentIndex == 1){
+            self.currentUser.gender = @"Female";
+        }
+        if (self.orientationPicker.selectedSegmentIndex == 0) {
+            self.currentUser.orientation = @"Straight";
+
+        } else if(self.orientationPicker.selectedSegmentIndex == 1){
+            self.currentUser.orientation = @"Bisexual";
+
+        }else if(self.orientationPicker.selectedSegmentIndex == 2){
+            self.currentUser.orientation = @"Gay";
+
+        }else if(self.orientationPicker.selectedSegmentIndex == 3){
+            self.currentUser.orientation = @"Lesbian";
+
+        }else if(self.orientationPicker.selectedSegmentIndex == 4){
+            self.currentUser.orientation = @"Transgender";
+
+        }
+
+        self.currentUser.languageArray = self.languageArray;
+        self.currentUser.aboutMe = self.aboutMeTextView.text;
+
+        NSData *imageData = UIImagePNGRepresentation(self.profileImage.image);
+        PFFile *imageFile = [PFFile fileWithData:imageData];
+
+        self.currentUser.profileImage = imageFile;
+
+        //disable the save button
+
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+
+        //Get user's information and display current location and profile picture.
+        [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Saving..." mode:MRProgressOverlayViewModeIndeterminate animated:YES];
+
+
+        [self saveUserInformationToParse:^{
+
+            [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+
+                if (succeeded) {
+
+                    [MRProgressOverlayView showOverlayAddedTo:self.view title:@"Success!" mode:MRProgressOverlayViewModeCheckmark animated:YES];
+
+                    [self dismissIndicator:^{
+
+                        //once we get user's
+                        self.navigationItem.rightBarButtonItem.enabled = YES;
+
+
+                        [MRProgressOverlayView dismissOverlayForView: self.view animated:YES];
+
+
+                        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Feed" bundle:nil];
+                        UIViewController *feedNavVC = [storyBoard instantiateViewControllerWithIdentifier:@"FeedNavVC"];
+                        [self presentViewController:feedNavVC animated:YES completion:nil];
+
+
+                    } afterDelay:1.5];
+                    
+                } else {
+                    self.navigationItem.rightBarButtonItem.enabled = YES;
+                    [self displayErrorMessage:error.localizedDescription];
+                    
+                    
+                }
+            }];
+            
+        } afterDelay:1.5];
+    }
+    
+}
+- (IBAction)onCancelButtonTapped:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 //Helper method to download user's profile image
 -(void)getUsersProfileImage{
 
@@ -153,23 +253,6 @@
     }];
 }
 
-
-
-
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
 
 
 #pragma mark - UITableView Delegate Methods
@@ -316,5 +399,18 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error - Please Try Again!" message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     
     [alertView show];
+}
+
+
+
+//**********************BLOCKS***********************************************//
+-(void)saveUserInformationToParse:(void(^)())block afterDelay:(NSTimeInterval)delay{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+    dispatch_after(popTime,dispatch_get_main_queue(), block);
+}
+
+-(void)dismissIndicator:(void(^)())block afterDelay:(NSTimeInterval)delay{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
+    dispatch_after(popTime,dispatch_get_main_queue(), block);
 }
 @end

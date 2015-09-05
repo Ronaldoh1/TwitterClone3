@@ -238,8 +238,16 @@
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" id="AYv-yu-vUL">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="hk6-Qf-Su4"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="IRi-1F-diN"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="hk6-Qf-Su4">
+                            <connections>
+                                <action selector="onCancelButtonTapped:" destination="pkY-OE-YXn" id="5Bd-8t-UW7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="IRi-1F-diN">
+                            <connections>
+                                <action selector="onSaveButtonTapped:" destination="pkY-OE-YXn" id="88H-em-T35"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -250,7 +258,7 @@
                         <outlet property="genderPicker" destination="eln-ES-OwC" id="z3e-OO-PkR"/>
                         <outlet property="nameTextField" destination="wqT-Re-4Bc" id="XtY-5M-2co"/>
                         <outlet property="orientationPicker" destination="l1S-PE-0il" id="qhz-6c-6Q3"/>
-                        <outlet property="portugueseButton" destination="XVT-Q1-eZd" id="dnQ-G3-qaN"/>
+                        <outlet property="portugueseButton" destination="Fjg-Og-qWV" id="ptx-Ne-OPP"/>
                         <outlet property="profileImage" destination="SKw-Gv-iQX" id="6zv-Wi-KlO"/>
                         <outlet property="spanishButton" destination="XVT-Q1-eZd" id="y7C-P1-4H7"/>
                     </connections>
