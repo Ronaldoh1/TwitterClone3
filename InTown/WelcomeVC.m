@@ -27,7 +27,12 @@
     self.signupButton.layer.borderWidth = 2.0;
     self.loginButton.layer.borderColor  = [UIColor whiteColor].CGColor;
     self.signupButton.layer.borderColor = [UIColor whiteColor].CGColor;
-    
+    // Send a notification to all devices subscribed to the "Giants" channel.
+    PFPush *push = [[PFPush alloc] init];
+    [push setChannel:@"Giants"];
+    [push setMessage:@"The Giants just scored!"];
+    [push sendPushInBackground];
+
 
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -69,22 +74,20 @@
 - (IBAction)onSignInWithTwitterButtonTapped:(UIButton *)sender {
 
 
-//    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
-//        if (!user) {
-//            NSLog(@"Uh oh. The user cancelled the Twitter login.");
-//            return;
-//        } else if (user.isNew) {
-//            NSLog(@"User signed up and logged in with Twitter!");
-//            self.navigationItem.leftBarButtonItem.enabled = YES;
-//            UIStoryboard *profileStoryboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
-//            UINavigationController *profileNavVC = [profileStoryboard instantiateViewControllerWithIdentifier:@"profileNavVC"];
-//            [self presentViewController:profileNavVC animated:YES completion:nil];
-//
-//        } else {
-//            NSLog(@"User logged in with Twitter!");
-//            self.navigationItem.leftBarButtonItem.enabled = YES;
-//        }
-//    }];
+    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Twitter login.");
+            return;
+        } else if (user.isNew) {
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Feed" bundle:nil];
+            UIViewController *feedNavVC = [storyBoard instantiateViewControllerWithIdentifier:@"FeedNavVC"];
+            [self presentViewController:feedNavVC animated:YES completion:nil];
+        } else {
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Feed" bundle:nil];
+            UIViewController *feedNavVC = [storyBoard instantiateViewControllerWithIdentifier:@"FeedNavVC"];
+            [self presentViewController:feedNavVC animated:YES completion:nil];
+        }
+    }];
 
 
 }

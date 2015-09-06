@@ -225,6 +225,10 @@
 
         [self getUsersProfileImage];
 
+        
+            [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"user"];
+            [[PFInstallation currentInstallation] saveEventually];
+
 
     }else if (self.currentUser == nil){
 

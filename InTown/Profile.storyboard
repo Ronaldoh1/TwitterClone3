@@ -265,60 +265,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="220" id="KzY-1N-m5f">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KzY-1N-m5f" id="znE-Xi-F1d">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Tell The World About Yourself" id="q3N-ia-Ren">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="135" id="evs-6G-GJy">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="evs-6G-GJy" id="bQg-8s-eXv">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSn-cG-sic">
-                                                    <rect key="frame" x="8" y="8" width="304" height="118"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
-                                                </textView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="rSn-cG-sic" firstAttribute="leading" secondItem="bQg-8s-eXv" secondAttribute="leadingMargin" id="4gC-6W-s8i"/>
-                                                <constraint firstItem="rSn-cG-sic" firstAttribute="top" secondItem="bQg-8s-eXv" secondAttribute="topMargin" id="55B-gU-yR4"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="rSn-cG-sic" secondAttribute="bottom" id="U8M-ae-nbF"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="rSn-cG-sic" secondAttribute="trailing" id="pU7-TS-gfa"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Tell The World About Yourself" id="Edw-LM-sZ9">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="135" id="aGm-WE-4VS">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aGm-WE-4VS" id="5w5-lZ-SU4">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOZ-Jx-g4S">
-                                                    <rect key="frame" x="8" y="8" width="304" height="118"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
-                                                </textView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="qOZ-Jx-g4S" firstAttribute="top" secondItem="5w5-lZ-SU4" secondAttribute="topMargin" id="0nU-O1-9Sc"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="qOZ-Jx-g4S" secondAttribute="trailing" id="OgU-F1-Qh3"/>
-                                                <constraint firstItem="qOZ-Jx-g4S" firstAttribute="leading" secondItem="5w5-lZ-SU4" secondAttribute="leadingMargin" id="pMI-gQ-oEM"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="qOZ-Jx-g4S" secondAttribute="bottom" id="u18-hE-Nhf"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

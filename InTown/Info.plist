@@ -2,16 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>InTown would like to know your current location location to retrieve posts near you!</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>InTown would like to always know your location to retrieve posts near you!</string>
-	<key>CFBundleDevelopmentRegion</key>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb691471660954564</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>691471660954564</string>
+    <key>FacebookDisplayName</key>
+    <string>InTown</string>
+    <key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>inTown.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>com.InTown.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -26,6 +35,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>InTown would like to always know your location to retrieve posts near you!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>InTown would like to know your current location location to retrieve posts near you!</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
